@@ -1,0 +1,6 @@
+@use "/src/app/styles/variable" as *;
+
+.productCard {
+	padding: 20px;
+	background-color: $colorBackgroundAccent;
+}

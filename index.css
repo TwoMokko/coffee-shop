@@ -1,0 +1,51 @@
+/* Colors */
+/* Sizes */
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+html {
+  height: 100%;
+  background-color: #FFF;
+}
+
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+input, select, textarea {
+  background-color: transparent;
+  border: none;
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: none;
+}
+
+#root {
+  width: 400px;
+  height: 641px;
+  background-color: #FFF;
+}
+
+/*# sourceMappingURL=index.css.map */
