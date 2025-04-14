@@ -1,5 +1,4 @@
 import { ReactNode, useMemo } from "react"
-import Button from "../../shared/ui/button"
 import cls from "./ui/payment.module.scss"
 import {
     ChoosingPaymentMethod,
@@ -18,10 +17,10 @@ const PaymentPage = (): ReactNode => {
         paymentStatus,
         displayMessage,
         setPaymentMethod,
+        setPaymentStatus,
         setDisplayMessage,
         completePayment,
         cancelPayment,
-        navigate
     } = usePayment()
 
     const { insertedAmount, remainingAmount, handlePayment: handleCashPayment } = useCashPayment(price, completePayment)
@@ -40,9 +39,13 @@ const PaymentPage = (): ReactNode => {
         switch (paymentMethod) {
             case PaymentMethod.CARD:
                 return <MethodCard
-                    onBack={() => setPaymentMethod(null)}
+                    onBack={() => {
+                        setPaymentStatus('processing')
+                        onCardPay()
+                    }}
                     displayMessage={displayMessage}
                     cancelPayment={cancelPayment}
+                    paymentStatus={paymentStatus}
                 />
             case PaymentMethod.CASH:
                 return <MethodCash
@@ -51,6 +54,7 @@ const PaymentPage = (): ReactNode => {
                     cancelPayment={cancelPayment}
                     insertedAmount={insertedAmount}
                     remainingAmount={remainingAmount}
+                    amount={price}
                 />
             default:
                 return <ChoosingPaymentMethod
@@ -61,29 +65,7 @@ const PaymentPage = (): ReactNode => {
     }, [paymentMethod, displayMessage, insertedAmount, remainingAmount])
 
     return <section className={cls.wrap}>
-        <Button className={'secondary'} onClick={() => navigate('/')}>К меню</Button>
-        {
-            paymentStatus === 'success' ? (
-                <div className={cls.success}>
-                    <h3>Оплата прошла успешно!</h3>
-                    <div>{displayMessage}</div>
-                    <Button onClick={() => navigate('/')} className='primary'>
-                        Вернуться в меню
-                    </Button>
-                </div>
-            ) : paymentStatus === 'failed' ? (
-                <div className={cls.error}>
-                    <div className={cls.message}>{displayMessage}</div>
-                    <Button onClick={cancelPayment} className='primary'>
-                        Попробовать снова
-                    </Button>
-                </div>
-            ) : (
-                <>
-                    {renderContent}
-                </>
-            )
-        }
+        {renderContent}
     </section>
 }
 

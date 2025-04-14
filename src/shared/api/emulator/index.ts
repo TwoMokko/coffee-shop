@@ -80,7 +80,7 @@ export const emulator = {
             setTimeout(() => {
                 if (isCancelled) return
                 // display_cb('Связь с банком...')
-                display_cb('Связь с банком... (нажмите enter/esc для отмены)')
+                display_cb('Связь с банком... (enter/esc)')
 
                 const paymentHandler = (e: KeyboardEvent) => {
                     if (isCancelled) return

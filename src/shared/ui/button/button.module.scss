@@ -13,4 +13,18 @@
 	&.secondary {
 		background-color: $colorSecondary;
 	}
+
+	&.light {
+		background-color: $colorBtnLight;
+	}
+
+	&.error {
+		background-color: $colorBackgroundError;
+	}
+
+	&.transparentLight {
+		background-color: transparent;
+		color: $colorTextLight;
+		border: 1px solid $colorBackgroundLight;
+	}
 }

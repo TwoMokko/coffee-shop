@@ -19,9 +19,9 @@ export const useVending = (productId: productCategoryData['id'] | null): Vending
 
                 if (result) {
                     setProgress(100)
-                    setStatus("Напиток готов!")
+                    setStatus('Напиток готов!')
                 } else {
-                    setStatus("Ошибка! Повторите попытку.")
+                    setStatus('Ошибка! Повторите попытку.')
                 }
 
                 setIsComplete(true)

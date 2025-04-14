@@ -33,7 +33,6 @@ export const usePayment = () => {
         setPaymentStatus,
         setDisplayMessage,
         completePayment,
-        cancelPayment,
-        navigate
+        cancelPayment
     }
 }

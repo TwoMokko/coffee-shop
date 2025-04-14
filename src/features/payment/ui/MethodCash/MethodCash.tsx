@@ -7,23 +7,31 @@ interface MethodCashProps {
     displayMessage: string,
     cancelPayment: () => void,
     insertedAmount: number,
-    remainingAmount: number
+    remainingAmount: number,
+    amount: number
 }
 
-const MethodCash: FC<MethodCashProps> = ({ onBack, displayMessage, cancelPayment, insertedAmount, remainingAmount }): ReactNode => {
+const MethodCash: FC<MethodCashProps> = ({ onBack, displayMessage, cancelPayment, insertedAmount, remainingAmount, amount }): ReactNode => {
+    const overMoney = (insertedAmount - amount) < 0 ? '' : `${insertedAmount - amount}₽`
+
     return <div className={cls.methodCash}>
-        <Button className='secondary' onClick={onBack}>выбрать другой способ оплаты</Button>
         <div className={cls.message}>
             <div>{displayMessage}</div>
             <div>
                 <div>Внесено: {insertedAmount}₽</div>
                 <div>Осталось внести: {remainingAmount}₽</div>
+                <div>Ваша сдача: {overMoney}</div>
             </div>
             <div>Нажмите 1 (10₽), 2 (50₽), 3 (100₽), 4 (500₽), 5 (1000₽) на клавиатуре</div>
         </div>
-        <Button onClick={cancelPayment} className='primary'>
-            Отмена оплаты
-        </Button>
+        <div className={cls.btnWrap}>
+            <Button className='secondary' onClick={onBack}>
+                Выбрать другой способ оплаты
+            </Button>
+            <Button onClick={cancelPayment} className='primary'>
+                Отмена оплаты
+            </Button>
+        </div>
     </div>
 }
 

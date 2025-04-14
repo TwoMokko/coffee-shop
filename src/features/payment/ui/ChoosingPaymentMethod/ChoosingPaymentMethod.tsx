@@ -1,6 +1,7 @@
 import { FC, ReactNode } from "react"
 import Button from "../../../../shared/ui/button"
 import cls from "./choosingPaymentMethod.module.scss"
+import { useNavigate } from "react-router-dom"
 
 interface ChoosingPaymentMethodProps {
     onCardPay: () => void,
@@ -8,7 +9,10 @@ interface ChoosingPaymentMethodProps {
 }
 
 const ChoosingPaymentMethod: FC<ChoosingPaymentMethodProps> = ({ onCardPay, onCashPay }): ReactNode => {
+    const navigate = useNavigate()
+
     return <div className={cls.choosingPaymentMethod}>
+        <Button className={'secondary'} onClick={() => navigate('/')}>К меню</Button>
         <div className={cls.message}>Выберите способ оплаты</div>
         <div className={cls.btnWrap}>
             <Button

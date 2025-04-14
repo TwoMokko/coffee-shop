@@ -1,14 +1,54 @@
+@use "/src/app/styles/variable" as *;
+
 .methodCard {
-	height: 100%;
+	background-color: $colorBackgroundPrimary;
 	width: 100%;
+	height: 100%;
+	padding: 20px 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.failed {
+	background-color: $colorBackgroundError;
+	width: 100%;
+	height: 100%;
+	padding: 20px 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: center;
 
-	.message {
-		flex: auto;
-		align-content: flex-end;
-		padding-bottom: 20px;
+	> div {
+		color: $colorTextLight;
+	}
+
+	.btnWrap {
+
+		button:not(:last-child) {
+			margin-bottom: 10px;
+		}
+	}
+
+	button {
+		color: $colorBackgroundError;
+	}
+}
+
+.message {
+	flex: auto;
+	align-items: center;
+	justify-content: center;
+	padding: 0 20%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	> img {
+		object-fit: contain;
+		width: 60%;
+		height: auto;
 	}
 }
