@@ -1,0 +1,24 @@
+@use "/src/app/styles/variable" as *;
+
+.catalog {
+	background-color: $colorBackgroundMain;
+	overflow-y: scroll;
+	height: 100%;
+
+	.header {
+		padding: 20px 10px;
+
+		&.coffee {
+			background-color: #EFCCB9;
+		}
+		&.tea {
+			background-color: #C9EA94;
+		}
+		&.milkshake {
+			background-color: #F9ECD2;
+		}
+		&.other {
+			background-color: #FFE665;
+		}
+	}
+}

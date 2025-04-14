@@ -1,0 +1,26 @@
+@use "/src/app/styles/variable" as *;
+
+.switcherCategory {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+
+	.category {
+		padding: 10px 10px 30px;
+		cursor: pointer;
+		text-align: center;
+
+		&.active {
+			background-color: #FFFFFF90;
+		}
+
+		&:not(.active) {
+			filter: grayscale(100%)
+		}
+
+		> img {
+			object-fit: contain;
+			width: 100%;
+			height: auto;
+		}
+	}
+}

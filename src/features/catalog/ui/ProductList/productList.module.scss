@@ -1,14 +1,38 @@
 @use "/src/app/styles/variable" as *;
 
-.productList {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 4px;
+.wrap {
 	padding: 10px;
+	background-color: $colorBackgroundLight;
+	border-radius: 20px 20px 0 0;
+	margin-top: -20px;
 
-	.productListItem {
-		padding: 10px;
-		border-radius: 20px;
-		border: 1px solid $colorBorder;
+	.productList {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 4px;
+
+		.productListItem {
+			padding: 10px;
+			border-radius: 20px;
+			border: 1px solid $colorBorder;
+			text-align: center;
+			cursor: pointer;
+
+
+			span {
+				font-size: 1.3rem;
+				font-weight: 600;
+			}
+
+			.imgWrap {
+				height: 120px;
+
+				img {
+					object-fit: contain;
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
 	}
 }

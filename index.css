@@ -46,6 +46,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   width: 400px;
   height: 641px;
   background-color: #FFF;
+  position: relative;
+  overflow: hidden;
+  /*overflow-y: scroll;*/
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,7 +1,7 @@
-import { productData } from "./types.ts"
+import { productDataItem } from "./types.ts"
 import { mockProducts } from "./mockData.ts"
 
-export const fetchProducts = (): Promise<productData> => {
+export const fetchProducts = (): Promise<productDataItem[]> => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const isSuccess = Math.random() > 0.5

@@ -1,0 +1,19 @@
+.methodCash {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	//text-align: center;
+
+	.message {
+		flex: auto;
+		align-content: flex-end;
+		padding-bottom: 20px;
+
+		> div:not(:last-child) {
+			margin-bottom: 10px;
+		}
+	}
+}

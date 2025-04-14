@@ -1,6 +1,96 @@
 @use "/src/app/styles/variable" as *;
 
 .productCard {
-	padding: 20px;
-	background-color: $colorBackgroundAccent;
+	padding: 20px 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	justify-content: space-between;
+	height: 100%;
+
+	.content {
+		flex: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+
+		.picture {
+			flex: auto;
+			object-fit: contain;
+			height: 200px;
+			//width: auto;
+			//height: 100%;
+		}
+
+		.title {
+			flex: none;
+			font-size: 1.3rem;
+		}
+
+		.sizes {
+			flex: none;
+			display: flex;
+			gap: 4px;
+			width: 100%;
+
+			> div {
+				flex: auto;
+				padding: 10px;
+				border-radius: 10px;
+				text-align: center;
+				cursor: pointer;
+				height: 120px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+
+				&:not(.active) {
+					background-color: $colorSecondary;
+
+					> img {
+						opacity: 0.5;
+					}
+				}
+
+				&.active {
+					background-color: $colorBackgroundPrimary;
+				}
+
+				> img {
+					flex: auto;
+					//object-fit: contain;
+					width: auto;
+					margin: auto;
+				}
+
+				> div {
+					flex: none;
+				}
+
+				&:nth-child(1) > img {
+					max-height: 30%;
+				}
+				&:nth-child(2) > img {
+					max-height: 50%;
+				}
+				&:nth-child(3) > img {
+					max-height: 60%;
+				}
+			}
+		}
+	}
+
+	.button {
+		flex: none;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		cursor: pointer;
+
+		.price {
+			font-size: 1.5rem;
+			font-weight: 600;
+		}
+	}
 }

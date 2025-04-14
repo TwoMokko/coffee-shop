@@ -1,8 +1,9 @@
-import { FC, ReactNode } from "react"
+import React, { FC, ReactNode } from "react"
 import cls from "./modal.module.scss"
+import { MdClose } from "react-icons/md"
 
 interface ModalProps {
-    isOpen: () => void,
+    isOpen: boolean,
     onClose: () => void,
     children: ReactNode,
 }
@@ -10,10 +11,20 @@ interface ModalProps {
 const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null
 
+    const handleOverlayClick = (e: React.MouseEvent) => {
+        if (e.target === e.currentTarget) {
+            onClose()
+        }
+    }
+
     return <>
-        <div className={cls.overlay}>
+        <div className={cls.overlay} onClick={handleOverlayClick}>
             <div className={cls.modal}>
-                <button onClick={onClose}>×</button>
+                <div className={cls.close}>
+                    <button onClick={onClose}>
+                        <MdClose size={20} />
+                    </button>
+                </div>
                 {children}
             </div>
         </div>

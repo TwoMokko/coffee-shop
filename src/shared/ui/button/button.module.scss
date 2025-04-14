@@ -1,3 +1,16 @@
-.button {
+@use "/src/app/styles/variable" as *;
 
+.button {
+	width: 100%;
+	padding: 10px;
+	border-radius: 10px;
+	cursor: pointer;
+
+	&.primary {
+		background-color: $colorBtnPrimary;
+	}
+
+	&.secondary {
+		background-color: $colorSecondary;
+	}
 }

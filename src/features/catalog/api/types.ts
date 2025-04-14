@@ -1,15 +1,20 @@
-export interface productTypeData {
+export interface productCategoryData {
     id: number,
     title: string,
-    price: number,
-    imagePath: string
+    prices: { price: number, sizeMug: number }[],
+    imagePath: string,
 }
 
-export type productData = {
-    [key in productType]: productTypeData[]
+export type productDataItem = {
+    title: {
+        alias: productCategory,
+        name: string,
+        imagePath: string,
+    },
+    products: productCategoryData[]
 }
 
-export enum productType {
+export enum productCategory {
     COFFEE = 'coffee',
     TEA = 'tea',
     MILKSHAKE = 'milkshake',

@@ -1,12 +1,16 @@
-import {ReactNode, useCallback, useEffect, useMemo, useState} from "react"
-import { productData, productType } from "../../features/catalog/api/types.ts"
+import { ReactNode, useEffect, useMemo, useState } from "react"
+import { productDataItem, productCategory } from "../../features/catalog/api/types.ts"
 import { fetchProducts } from "../../features/catalog/api"
 import { ProductList } from "../../features/catalog"
+import SwitcherCategory from "../../features/catalog/ui/SwitcherCategory"
+import cls from "./ui/catalog.module.scss"
+import ErrorGetProduct from "../../features/catalog/ui/ErrorGetProduct"
+import CatalogLoading from "../../features/catalog/ui/Loading";
 
 const CatalogPage = (): ReactNode => {
-    const [products, setProducts] = useState<productData>()
+    const [products, setProducts] = useState<productDataItem[]>()
     const [isLoading, setIsLoading] = useState<boolean>(true)
-    const [activeProduct, setActiveProduct] = useState<productType>(productType.COFFEE)
+    const [activeCategory, setActiveCategory] = useState<productCategory>(productCategory.COFFEE)
 
     useEffect(() => {
         fetchProducts()
@@ -22,34 +26,24 @@ const CatalogPage = (): ReactNode => {
     }, [])
 
     const renderContent = useMemo((): ReactNode => {
-        if (products)
-            return <ProductList products={products[activeProduct]} />
-    }, [activeProduct, products])
+        const prod: productDataItem | undefined = products?.find(itm => itm.title.alias === activeCategory)
 
-    const handleTypeChange = useCallback((type: keyof productData) => {
-        setActiveProduct(type)
-    }, [])
+        if (prod)
+            return <ProductList products={prod.products} title={prod.title.name} />
+    }, [activeCategory, products])
+
+
 
     if (isLoading)
-        return <div>Загрузка...</div>
+        return <CatalogLoading />
 
     if (!products)
-        return <div>Продукция не найдена</div>
+        return <ErrorGetProduct />
 
-    return <div>
-        <div>
-            {
-                Object.keys(products)
-                    .map(type => {
-                        if (products[type as keyof productData].length > 0) return <div
-                            key={type}
-                            onClick={() => handleTypeChange(type as keyof productData)}>
-                            {type}
-                        </div>
-                    })
-            }
-        </div>
-        { renderContent }
+    return <div className={cls.catalog}>
+        <header className={`${cls.header} ${cls[activeCategory]}`}>Выбор напитка</header>
+        <SwitcherCategory products={products} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
+        {renderContent}
     </div>
 }
 

@@ -1,25 +1,26 @@
 /* Colors */
 $colorBlack                     : #000;
 $colorLight                     : #FFF;
-$colorAccent                    : #F5D009;
+$colorPrimary					: #F5D009;
 
 $colorSecondary                 : #F2F2F2;
 $colorDarker                    : #626262;
 $colorMedium                    : #939393;
 $colorMediumLight               : #C4C4C4;
+$colorBackgroundOpacity         : #00000060;
 
 
 $colorTextDark                  : $colorBlack;
 $colorTextLight                 : $colorLight;
 $colorTextMedium                : $colorDarker;
 $colorTextMediumLight           : $colorMediumLight;
-$colorTextAccent                : $colorAccent;
+$colorTextPrimary				: $colorPrimary;
 
 $colorIcons                     : $colorMedium;
-$colorBtnAccent                 : $colorAccent;
+$colorBtnPrimary				: $colorPrimary;
 
 $colorBackgroundLight           : $colorLight;
-$colorBackgroundAccent          : $colorAccent;
+$colorBackgroundPrimary			: $colorPrimary;
 $colorBackgroundMain            : $colorSecondary;
 $colorBorder                    : $colorSecondary;
 
