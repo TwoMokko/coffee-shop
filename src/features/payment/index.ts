@@ -7,12 +7,12 @@ import { useCashPayment } from "./model/hooks/useCashPayment.ts"
 import { useCardPayment } from "./model/hooks/useCardPayment.ts"
 
 export {
-    ChoosingPaymentMethod,
     PaymentMethod,
+    PaymentStatus,
+    ChoosingPaymentMethod,
     MethodCard,
     MethodCash,
     usePayment,
     useCashPayment,
     useCardPayment
 }
-export type { PaymentStatus }

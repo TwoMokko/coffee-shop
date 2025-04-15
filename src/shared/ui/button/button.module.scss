@@ -6,6 +6,10 @@
 	border-radius: 10px;
 	cursor: pointer;
 
+	&:not(.transparentLight) {
+		color: $colorTextDark;
+	}
+
 	&.primary {
 		background-color: $colorBtnPrimary;
 	}

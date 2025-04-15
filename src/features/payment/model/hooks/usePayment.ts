@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate, useParams, useLocation } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { PaymentMethod, PaymentStatus } from "../types"
 
 export const usePayment = () => {
@@ -8,17 +8,17 @@ export const usePayment = () => {
     const navigate = useNavigate()
 
     const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | null>(null)
-    const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('idle')
+    const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>(PaymentStatus.IDLE)
     const [displayMessage, setDisplayMessage] = useState('')
 
     const completePayment = (success: boolean) => {
-        setPaymentStatus(success ? 'success' : 'failed')
+        setPaymentStatus(success ? PaymentStatus.SUCCESS : PaymentStatus.FAILED)
         if (success) navigate(`/vend/${productId}`)
     }
 
     const cancelPayment = () => {
         setPaymentMethod(null)
-        setPaymentStatus('idle')
+        setPaymentStatus(PaymentStatus.IDLE)
         setDisplayMessage('')
     }
 

@@ -3,4 +3,9 @@ export enum PaymentMethod {
     CARD = 'card',
 }
 
-export type PaymentStatus = 'idle' | 'processing' | 'success' | 'failed'
+export enum PaymentStatus {
+    IDLE = 'idle',
+    PROCESSING = 'processing',
+    SUCCESS = 'success',
+    FAILED = 'failed',
+}

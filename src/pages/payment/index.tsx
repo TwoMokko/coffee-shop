@@ -1,10 +1,11 @@
-import { ReactNode, useMemo } from "react"
+import {ReactNode, useMemo} from "react"
 import cls from "./ui/payment.module.scss"
 import {
     ChoosingPaymentMethod,
     MethodCard,
     MethodCash,
     PaymentMethod,
+    PaymentStatus,
     useCardPayment,
     useCashPayment,
     usePayment
@@ -40,7 +41,7 @@ const PaymentPage = (): ReactNode => {
             case PaymentMethod.CARD:
                 return <MethodCard
                     onBack={() => {
-                        setPaymentStatus('processing')
+                        setPaymentStatus(PaymentStatus.PROCESSING)
                         onCardPay()
                     }}
                     displayMessage={displayMessage}

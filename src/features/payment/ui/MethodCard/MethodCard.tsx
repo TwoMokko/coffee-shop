@@ -16,7 +16,7 @@ const MethodCard: FC<MethodCardProps> = ({ onBack, displayMessage, cancelPayment
 
     return <>
         {
-            paymentStatus === 'success' ? (
+            paymentStatus === PaymentStatus.SUCCESS ? (
                 <div className={cls.success}>
                     <div className={cls.message}>
                         <img alt={'success'} src={'/images/icons/drink.svg'}/>
@@ -26,7 +26,7 @@ const MethodCard: FC<MethodCardProps> = ({ onBack, displayMessage, cancelPayment
                         Вернуться в меню
                     </Button>
                 </div>
-            ) : paymentStatus === 'failed' ? (
+            ) : paymentStatus === PaymentStatus.FAILED ? (
                 <div className={cls.failed}>
                     <div className={cls.message}>
                         <img alt={'error'} src={'/images/icons/error-payment.svg'}/>
